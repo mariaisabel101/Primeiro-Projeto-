@@ -10,42 +10,57 @@ Este projeto é uma aplicação de console desenvolvida em **C#** que tem como o
 * Comparação lógica para determinar qual dos dois triângulos possui a maior área.
 * Exibição dos resultados com formatação de precisão numérica.
 
-* using Console_triangulo;
+Código Abaixo:
+
+
 using System;
 using System.Globalization;
+
 namespace Course
 {
+
+    class Triangulo
+    {
+        public double a;
+        public double b;
+        public double c;
+    }
 
     class Program
     {
         static void Main(string[] args)
         {
-            triangulo x, y;
-            x = new triangulo();
-            y = new triangulo();
+            Triangulo x, y;
+            x = new Triangulo();
+            y = new Triangulo();
 
-            Console.WriteLine("Entre com a medida do triangulo x: ");
-            x.a = double.Parse(Console.ReadLine());
-            x.b = double.Parse(Console.ReadLine());
-            x.c = double.Parse(Console.ReadLine());
+            Console.WriteLine("Entre com as medidas do triangulo X: ");
+            x.a = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            x.b = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            x.c = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-            Console.WriteLine("Entre com a medida do triangulo y: ");
-            y.a = double.Parse(Console.ReadLine());
-            y.b = double.Parse(Console.ReadLine());
-            y.c = double.Parse(Console.ReadLine());
+            Console.WriteLine("Entre com as medidas do triangulo Y: ");
+            y.a = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            y.b = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            y.c = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
             double p = (x.a + x.b + x.c) / 2.0;
-            double areax = Math.Sqrt(p * (p - x.a) * (p - x.b) * (p - x.c));
+            double areaX = Math.Sqrt(p * (p - x.a) * (p - x.b) * (p - x.c));
+
             p = (y.a + y.b + y.c) / 2.0;
-            double areay = Math.Sqrt(p * (p - y.a) * (p - y.b) * (p - y.c));
-            Console.WriteLine("Area de x = " + areax.ToString("F4"));
-            if (areax > areay)
+            double areaY = Math.Sqrt(p * (p - y.a) * (p - y.b) * (p - y.c));
+
+            Console.WriteLine("Área de X = " + areaX.ToString("F4", CultureInfo.InvariantCulture));
+            Console.WriteLine("Área de Y = " + areaY.ToString("F4", CultureInfo.InvariantCulture));
+
+            if (areaX > areaY)
             {
-                Console.WriteLine("Maior area: Y");
+                Console.WriteLine("Maior área: X");
+            }
+            else
+            {
+                Console.WriteLine("Maior área: Y");
             }
         }
     }
 }
-
-
-
